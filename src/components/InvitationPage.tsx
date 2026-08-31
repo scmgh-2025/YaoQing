@@ -59,25 +59,8 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ isActive, onNext
 
         {/* Signature */}
         <div className="mt-8 text-right">
-          <p className="text-xs font-semibold text-[#1F2933]">{theme.organizer}</p>
+          <p className="text-sm font-semibold text-[#1F2933]">{theme.organizer}</p>
         </div>
-      </motion.div>
-
-      {/* 3. Bottom Next Button */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="pb-4 flex justify-center"
-      >
-        <button
-          id="invitation-next-btn"
-          onClick={onNext}
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-[#DFF4FF] shadow-sm text-xs font-medium text-[#4A90E2] hover:bg-white hover:shadow transition-all active:scale-95"
-        >
-          <span>查看大会介绍</span>
-          <Send className="w-3.5 h-3.5 text-[#56C596]" />
-        </button>
       </motion.div>
 
     </div>

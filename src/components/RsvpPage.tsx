@@ -371,7 +371,7 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
           
           {/* 1. 参会方名称 * */}
           <div>
-            <label className="block text-xs font-semibold text-[#1F2933] mb-1">
+            <label className="block text-sm font-semibold text-[#1F2933] mb-1">
               <span className="text-[#4A90E2] mr-1">*</span>参会方名称
             </label>
             <div className="relative">
@@ -383,7 +383,7 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
                   if (errors.companyName) setErrors({ ...errors, companyName: '' });
                 }}
                 placeholder="请输入您的单位 / 机构 / 酒店名称"
-                className={`w-full px-3 py-2 text-xs sm:text-sm bg-white border rounded-lg outline-none transition-all ${
+                className={`w-full px-3 py-2 text-sm sm:text-base bg-white border rounded-lg outline-none transition-all ${
                   errors.companyName
                     ? 'border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100'
                     : 'border-[#E2E8F0] focus:border-[#4A90E2] focus:ring-3 focus:ring-[#4A90E2]/15'
@@ -399,7 +399,7 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
 
           {/* 2. 参会人姓名 * */}
           <div>
-            <label className="block text-xs font-semibold text-[#1F2933] mb-1">
+            <label className="block text-sm font-semibold text-[#1F2933] mb-1">
               <span className="text-[#4A90E2] mr-1">*</span>参会人姓名
             </label>
             <input
@@ -410,7 +410,7 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
                 if (errors.attendeeName) setErrors({ ...errors, attendeeName: '' });
               }}
               placeholder="请输入参会嘉宾姓名"
-              className={`w-full px-3 py-2 text-xs sm:text-sm bg-white border rounded-lg outline-none transition-all ${
+              className={`w-full px-3 py-2 text-sm sm:text-base bg-white border rounded-lg outline-none transition-all ${
                 errors.attendeeName
                   ? 'border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100'
                   : 'border-[#E2E8F0] focus:border-[#4A90E2] focus:ring-3 focus:ring-[#4A90E2]/15'
@@ -426,7 +426,7 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
           {/* 3. 参会人数 * (Number input, default 1) */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-[#1F2933] mb-1">
+              <label className="block text-sm font-semibold text-[#1F2933] mb-1">
                 <span className="text-[#4A90E2] mr-1">*</span>参会人数
               </label>
               <input
@@ -438,14 +438,14 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
                   const val = parseInt(e.target.value) || 1;
                   setFormData({ ...formData, attendeeCount: val });
                 }}
-                className="w-full px-3 py-2 text-xs sm:text-sm bg-white border border-[#E2E8F0] rounded-lg outline-none focus:border-[#4A90E2] focus:ring-3 focus:ring-[#4A90E2]/15"
+                className="w-full px-3 py-2 text-sm sm:text-base bg-white border border-[#E2E8F0] rounded-lg outline-none focus:border-[#4A90E2] focus:ring-3 focus:ring-[#4A90E2]/15"
               />
             </div>
 
             {/* 4. 联系电话 * (Mobile format - 11 digits check) */}
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="block text-xs font-semibold text-[#1F2933]">
+                <label className="block text-sm font-semibold text-[#1F2933]">
                   <span className="text-[#4A90E2] mr-1">*</span>联系电话
                 </label>
                 {formData.phone.length > 0 && (
@@ -492,7 +492,7 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
                   }
                 }}
                 placeholder="11位手机号"
-                className={`w-full px-3 py-2 text-xs sm:text-sm bg-white border rounded-lg outline-none transition-all ${
+                className={`w-full px-3 py-2 text-sm sm:text-base bg-white border rounded-lg outline-none transition-all ${
                   errors.phone
                     ? 'border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100 bg-red-50/20'
                     : 'border-[#E2E8F0] focus:border-[#4A90E2] focus:ring-3 focus:ring-[#4A90E2]/15'
@@ -513,7 +513,7 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
 
           {/* 5. 备注 (Optional Textarea) */}
           <div>
-            <label className="block text-xs font-semibold text-[#1F2933] mb-1">
+            <label className="block text-sm font-semibold text-[#1F2933] mb-1">
               备注（选填）
             </label>
             <textarea
@@ -521,7 +521,7 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
               value={formData.remark}
               onChange={(e) => setFormData({ ...formData, remark: e.target.value })}
               placeholder="如有特殊需求请填写..."
-              className="w-full px-3 py-2 text-xs sm:text-sm bg-white border border-[#E2E8F0] rounded-lg outline-none focus:border-[#4A90E2] focus:ring-3 focus:ring-[#4A90E2]/15 resize-none"
+              className="w-full px-3 py-2 text-sm sm:text-base bg-white border border-[#E2E8F0] rounded-lg outline-none focus:border-[#4A90E2] focus:ring-3 focus:ring-[#4A90E2]/15 resize-none"
             />
           </div>
 
@@ -547,23 +547,6 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
             </button>
           </div>
         </form>
-      </motion.div>
-
-      {/* 3. Bottom Guide Nav */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="pb-4 pt-1 flex justify-center shrink-0"
-      >
-        <button
-          id="rsvp-next-btn"
-          onClick={onNext}
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-[#DFF4FF] shadow-sm text-xs font-medium text-[#4A90E2] hover:bg-white hover:shadow transition-all active:scale-95"
-        >
-          <span>查看参会指南 & 地址</span>
-          <MapPin className="w-3.5 h-3.5 text-[#56C596]" />
-        </button>
       </motion.div>
 
       {/* Success Modal */}

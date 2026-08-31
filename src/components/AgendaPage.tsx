@@ -122,23 +122,6 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
         </div>
       </div>
 
-      {/* 3. Bottom Next Button */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="pb-4 pt-1 flex justify-center shrink-0"
-      >
-        <button
-          id="agenda-next-btn"
-          onClick={onNext}
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-[#DFF4FF] shadow-sm text-xs font-medium text-[#4A90E2] hover:bg-white hover:shadow transition-all active:scale-95"
-        >
-          <span>填写参会回执</span>
-          <ArrowRight className="w-3.5 h-3.5 text-[#56C596]" />
-        </button>
-      </motion.div>
-
     </div>
   );
 };

@@ -36,7 +36,7 @@ export const INVITATION_CONFIG: ConferenceConfig = {
 
   invitationText: '衷心邀请您莅临本次智赋文旅・数启新局 — 文旅场景 AI 智能体创新实践交流大会，期盼与您相聚贵阳，共探 AI 赋能文旅产业的实践路径，携手开启文旅数字化崭新格局。',
 
-  introText: '当前 AI 技术加速赋能文旅产业变革，为酒店、景区带来全新发展机遇。本次大会聚焦文旅 AI 落地实践，邀请行业领导、协会、酒店、景区、合作伙伴及媒体齐聚现场，分享行业前沿观点，发布酒店、景区智能体核心方案，与各位嘉宾共探产业升级新机遇。',
+  introText: '当前 AI 技术加速赋能文旅产业变革，为酒店带来全新发展机遇。本次大会聚焦文旅 AI 落地实践，邀请行业领导、协会、酒店、合作伙伴及媒体齐聚现场，分享行业前沿观点，发布酒店智能体核心方案，与各位嘉宾共探产业升级新机遇。',
 
   introBannerUrl: 'https://i.mji.rip/2026/08/31/79a1ed72fa77a878d2b088f57755235d.md.png',
 
@@ -64,7 +64,7 @@ export const INVITATION_CONFIG: ConferenceConfig = {
       roleType: 'expert',
       roleLabel: '特邀专家',
       title: '首席 AI 架构科学家',
-      organization: '人工智能协会 / 智能文旅实验室',
+      organization: '人工智能协会',
       bio: '深耕大模型与垂直智能体在文旅、酒旅服务场景的工程化落地与认知交互演化。',
       avatarBg: '#EDFAF4',
     },
@@ -74,7 +74,7 @@ export const INVITATION_CONFIG: ConferenceConfig = {
       roleType: 'guest',
       roleLabel: '特邀嘉宾',
       title: '中国饭店协会高级顾问',
-      organization: '国际高星级酒店数字化研究中心',
+      organization: 'XXXX',
       bio: '二十年奢华酒店运营及智慧中台架构经验，洞悉酒店降本增效与数字化体验升级。',
       avatarBg: '#F0F7FE',
     },
@@ -84,7 +84,7 @@ export const INVITATION_CONFIG: ConferenceConfig = {
       roleType: 'guest',
       roleLabel: '特邀嘉宾',
       title: '副总裁 / 数字化运营负责人',
-      organization: '头部文旅科技运营集团',
+      organization: 'XXXX',
       bio: '专注文旅场景线上线下一体化流量运营与多模态 AI 导览互动体系构建。',
       avatarBg: '#F3FBF7',
     },

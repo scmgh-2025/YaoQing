@@ -54,26 +54,9 @@ export const IntroPage: React.FC<IntroPageProps> = ({ isActive, onNext }) => {
         <div className="w-10 h-1 rounded-full bg-gradient-to-r from-[#4A90E2] to-[#56C596] mb-3.5" />
 
         {/* Intro Body Text (Line-height 1.8, Medium Grey, Justified) */}
-        <p className="text-[13.5px] sm:text-[14.5px] leading-[1.8] text-[#6B7280] text-justify tracking-wide">
+        <p className="text-base sm:text-[17px] leading-[1.8] text-[#6B7280] text-justify tracking-wide">
           {introText}
         </p>
-      </motion.div>
-
-      {/* 3. Bottom Next Button */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="pb-3 flex justify-center"
-      >
-        <button
-          id="intro-next-btn"
-          onClick={onNext}
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-[#DFF4FF] shadow-sm text-xs font-medium text-[#4A90E2] hover:bg-white hover:shadow transition-all active:scale-95"
-        >
-          <span>查看特邀嘉宾</span>
-          <ArrowRight className="w-3.5 h-3.5 text-[#56C596]" />
-        </button>
       </motion.div>
 
     </div>
