@@ -11,13 +11,24 @@ export const CoverPage: React.FC<CoverPageProps> = ({ isActive }) => {
   const { theme } = INVITATION_CONFIG;
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-between py-12 px-6 sm:px-8 max-w-lg mx-auto select-none">
+    <div
+      className="relative w-full h-full flex flex-col justify-between py-12 px-6 sm:px-8 max-w-lg mx-auto select-none overflow-hidden"
+      style={{
+        backgroundImage:
+          'url(https://telegraph-image-92x.pages.dev/file/57d6c56d418e5590a6f52-bc3eccd93fe3ce15c7.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* 半透明遮罩，保证内容可读性 */}
+      <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px] pointer-events-none" />
       
       {/* 1. Top Spacer or Header */}
-      <div className="w-full pt-4" />
+      <div className="w-full pt-4 relative z-10" />
 
       {/* 2. Middle Main Conference Theme & Time/Location */}
-      <div className="my-auto py-4 flex flex-col items-center text-center">
+      <div className="my-auto py-4 flex flex-col items-center text-center relative z-10">
         {/* Main Title */}
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
@@ -80,7 +91,7 @@ export const CoverPage: React.FC<CoverPageProps> = ({ isActive }) => {
         initial={{ opacity: 0, y: 15 }}
         animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
         transition={{ duration: 0.7, delay: 0.45 }}
-        className="text-center pt-4 pb-6 space-y-1.5 border-t border-[#4A90E2]/15"
+        className="text-center pt-4 pb-6 space-y-1.5 border-t border-[#4A90E2]/15 relative z-10"
       >
         <div className="text-[13.5px] sm:text-[14.5px] text-[#4B5563]">
           主办：<span className="text-[#1F2933] font-semibold">{theme.organizer}</span>
