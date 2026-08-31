@@ -1,0 +1,6 @@
+{
+  "name": "智赋文旅·数启新局 - H5电子邀请函",
+  "description": "文旅场景AI智能体创新实践交流大会H5电子邀请函，支持开场拆信动效、全屏滑动翻页、特邀嘉宾、会议议程、参会回执及电子参会凭证。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

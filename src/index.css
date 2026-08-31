@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #DFF4FF;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    color: #1F2933;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  input, textarea, button {
+    user-select: auto;
+    -webkit-user-select: auto;
+    font-family: inherit;
+  }
+}
+
+/* Custom Soft Shadows & Utilities */
+.shadow-card-soft {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-envelope {
+  box-shadow: 0 16px 40px -10px rgba(31, 41, 51, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.shadow-letter {
+  box-shadow: 0 8px 30px rgba(74, 144, 226, 0.12);
+}
+
+.shadow-button-glow {
+  box-shadow: 0 6px 16px rgba(86, 197, 150, 0.28);
+}
+
+/* 3D Transform perspectives for Envelope */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Custom Scrollbar for scrollable inner cards */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Keyframes */
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(-24px) translateX(12px);
+    opacity: 0.7;
+  }
+}
+
+.animate-float-slow {
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatParticle 10s ease-in-out 3s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(8px);
+  }
+  60% {
+    transform: translateY(4px);
+  }
+}
+
+.animate-bounce-down {
+  animation: bounceDown 2s infinite;
+}
