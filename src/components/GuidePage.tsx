@@ -48,9 +48,9 @@ const MAPS: Record<
       short: '百度',
       accent: '#3385FF',
       // 传入 GCJ-02，必须声明 coord_type=gcj02，由百度自动转换 BD-09
-      scheme: `baidumap://map/direction?destination=latlng:${gcjLat},${gcjLng}|name:${encName}&coord_type=gcj02&mode=driving&region=${encodeURIComponent('贵阳')}&src=conference`,
-      // map.baidu.com/direction 已废弃（404），改用搜索页 + coord_type=gcj02
-      web: `https://map.baidu.com/search/?q=${encName}&latlng=${gcjLat},${gcjLng}&coord_type=gcj02&region=${encodeURIComponent('贵阳')}`,
+      scheme: `baidumap://map/navi?location=${gcjLat},${gcjLng}&title=${encName}&coord_type=gcj02&region=${encodeURIComponent('贵阳')}&src=conference`,
+      // 官方导航 API 页面：带真实导航路线 + 内嵌「打开百度地图」唤起按钮
+      web: `https://api.map.baidu.com/direction?destination=${gcjLat},${gcjLng}&mode=driving&origin=curlocation&coord_type=gcj02&output=html&src=conference&title=${encName}`,
     },
   };
 })();
