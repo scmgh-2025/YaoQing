@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MapPin, Phone, Navigation, Copy, Check, ExternalLink, Calendar, Building, Sparkles, X } from 'lucide-react';
+import { MapPin, Phone, Navigation, Copy, Check, ExternalLink, Calendar, Building, Sparkles, X, Info } from 'lucide-react';
 import { INVITATION_CONFIG } from '../config';
+import { openNav, isIOS, isWeChat, type MapApp, type NavTarget } from '../utils/navigator';
 
 interface GuidePageProps {
   isActive: boolean;
@@ -14,6 +15,14 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
   const [copied, setCopied] = useState(false);
   const [showMapSelector, setShowMapSelector] = useState(false);
 
+  // 导航目标（WGS-84 基准，由 navigator.ts 自动转坐标系）
+  const navTarget: NavTarget = useMemo(() => ({
+    name: theme.venueText || '贵阳东景希尔顿酒店',
+    wgsLng: theme.longitude,
+    wgsLat: theme.latitude,
+    address: theme.address,
+  }), [theme]);
+
   const handleCopyAddress = () => {
     const textToCopy = theme.venueText || '贵阳东景希尔顿酒店';
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -22,7 +31,6 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
         setTimeout(() => setCopied(false), 2000);
       });
     } else {
-      // Fallback
       const textArea = document.createElement('textarea');
       textArea.value = textToCopy;
       document.body.appendChild(textArea);
@@ -34,21 +42,12 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
     }
   };
 
-  const handleSelectMapApp = (app: 'amap' | 'baidu' | 'tencent') => {
-    // 目的地：贵阳东景希尔顿酒店
-    // GCJ-02（高德 & 腾讯）: lng=106.622409, lat=26.650689
-    // BD-09（百度）       : lng=106.628743, lat=26.656407
-    let url = '';
-    if (app === 'amap') {
-      url = 'https://amap.com/place/?lat=26.650689&lng=106.622409&name=贵阳东景希尔顿酒店';
-    } else if (app === 'baidu') {
-      url = 'https://map.baidu.com/search/?q=贵阳东景希尔顿酒店&lat=26.656407&lng=106.628743';
-    } else if (app === 'tencent') {
-      url = 'https://map.qq.com/marker?lat=26.650689&lng=106.622409&title=贵阳东景希尔顿酒店';
-    }
-
-    if (url) {
-      window.open(url, '_blank', 'noopener,noreferrer');
+  const handleSelectMapApp = (app: MapApp) => {
+    const { wechatBlocked } = openNav(app, navTarget);
+    if (wechatBlocked) {
+      // 微信环境不做跳转，仅关闭弹窗并展示引导（由弹窗内的 wechat-hint 负责）
+      // 这里保持弹窗打开，让用户看到引导信息后手动处理
+      return;
     }
     setShowMapSelector(false);
   };
@@ -233,9 +232,22 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
                   <span>目的地：{theme.venueText}</span>
                 </div>
                 <p className="text-[11px] text-[#6B7280] mt-1 pl-3">
-                  {theme.venueDetail}（观山湖区金阳北路277号）
+                  {theme.address}
                 </p>
               </div>
+
+              {/* 微信环境引导提示（微信内置浏览器会拦截 URL Scheme） */}
+              {isWeChat() && (
+                <div className="mt-3 p-3 rounded-xl bg-[#FFF7E6] border border-[#FFD591] flex items-start gap-2">
+                  <Info className="w-4 h-4 text-[#FA8C16] shrink-0 mt-0.5" />
+                  <div className="text-[11.5px] leading-relaxed text-[#AD6800]">
+                    当前在微信中打开，地图 App 唤起可能被拦截。
+                    <br />
+                    请点击右上角 <span className="font-bold">「⋯」</span> →
+                    <span className="font-bold">「在浏览器中打开」</span> 后重试。
+                  </div>
+                </div>
+              )}
 
               {/* Map Options List */}
               <div className="mt-3.5 space-y-2">
@@ -252,6 +264,7 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
                       <div className="text-xs font-semibold text-[#1F2933] group-hover:text-[#4A90E2]">
                         高德地图
                       </div>
+                      <div className="text-[10px] text-[#9CA3AF] mt-0.5">GCJ-02 · 自动唤起 App</div>
                     </div>
                   </div>
                   <ExternalLink className="w-3.5 h-3.5 text-[#9CA3AF] group-hover:text-[#4A90E2]" />
@@ -270,6 +283,7 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
                       <div className="text-xs font-semibold text-[#1F2933] group-hover:text-[#3385FF]">
                         百度地图
                       </div>
+                      <div className="text-[10px] text-[#9CA3AF] mt-0.5">BD-09 · 自动唤起 App</div>
                     </div>
                   </div>
                   <ExternalLink className="w-3.5 h-3.5 text-[#9CA3AF] group-hover:text-[#3385FF]" />
@@ -288,10 +302,32 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
                       <div className="text-xs font-semibold text-[#1F2933] group-hover:text-[#2E7D5D]">
                         腾讯地图
                       </div>
+                      <div className="text-[10px] text-[#9CA3AF] mt-0.5">GCJ-02 · 自动唤起 App</div>
                     </div>
                   </div>
                   <ExternalLink className="w-3.5 h-3.5 text-[#9CA3AF] group-hover:text-[#2E7D5D]" />
                 </button>
+
+                {/* 4. 苹果地图（仅 iOS 显示） */}
+                {isIOS() && (
+                  <button
+                    onClick={() => handleSelectMapApp('apple')}
+                    className="w-full flex items-center justify-between p-3 rounded-xl border border-[#F0F2F5] hover:border-[#1F2933]/40 hover:bg-[#F1F5F9] transition-all active:scale-[0.98] group cursor-pointer"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-[#1F2933]/10 text-[#1F2933] flex items-center justify-center font-bold text-xs">
+                        
+                      </div>
+                      <div className="text-left">
+                        <div className="text-xs font-semibold text-[#1F2933] group-hover:text-[#1F2933]">
+                          苹果地图
+                        </div>
+                        <div className="text-[10px] text-[#9CA3AF] mt-0.5">WGS-84 · 系统自带</div>
+                      </div>
+                    </div>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#9CA3AF] group-hover:text-[#1F2933]" />
+                  </button>
+                )}
               </div>
 
               {/* Cancel Button */}

@@ -12,9 +12,13 @@ export const INVITATION_CONFIG: ConferenceConfig = {
     venueText: '贵阳东景希尔顿酒店',
     venueDetail: 'B2 贵阳宴会厅 1',
     address: '贵州省贵阳市观山湖区金阳北路 277 号，贵阳东景希尔顿酒店 ——B2 贵阳宴会厅 1',
-    mapUrl: 'https://apis.map.qq.com/uri/v1/marker?marker=coord:26.6348,106.6318;title:贵阳东景希尔顿酒店;addr:贵阳市观山湖区金阳北路277号',
-    latitude: 26.6348,
-    longitude: 106.6318,
+    // 目的地：贵阳东景希尔顿酒店（观山湖区金阳北路 277 号 B2 贵阳宴会厅 1）
+    // 下方 latitude / longitude 为 **WGS-84（GPS 原始坐标）**
+    // 导航时会通过 src/utils/coord.ts 自动转换为：
+    //   GCJ-02（高德 / 腾讯）: lng=106.622409, lat=26.650689
+    //   BD-09 （百度）       : lng=106.628743, lat=26.656407
+    latitude: 26.65437065456038,
+    longitude: 106.6188596408638,
     organizer: '贵旅数网科技有限公司',
     coOrganizer: '云码通数据运营股份有限公司',
     contactName: 'XXX',
