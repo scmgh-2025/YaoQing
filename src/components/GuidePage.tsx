@@ -35,25 +35,20 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
   };
 
   const handleSelectMapApp = (app: 'amap' | 'baidu' | 'tencent') => {
-    const lat = theme.latitude || 26.6348;
-    const lng = theme.longitude || 106.6318;
-    const name = encodeURIComponent(theme.venueText || '贵阳东景希尔顿酒店');
-    const address = encodeURIComponent(theme.address || '贵阳市观山湖区金阳北路277号');
-
+    // 目的地：贵阳东景希尔顿酒店
+    // GCJ-02（高德 & 腾讯）: lng=106.622409, lat=26.650689
+    // BD-09（百度）       : lng=106.628743, lat=26.656407
     let url = '';
     if (app === 'amap') {
-      // 高德地图 (GCJ-02)
-      url = `https://uri.amap.com/marker?position=${lng},${lat}&name=${name}&src=conference&coordinate=gaode&callnative=1`;
+      url = 'https://amap.com/place/?lat=26.650689&lng=106.622409&name=贵阳东景希尔顿酒店';
     } else if (app === 'baidu') {
-      // 百度地图 (指定 gcj02 坐标系自适应)
-      url = `https://api.map.baidu.com/marker?location=${lat},${lng}&title=${name}&content=${address}&output=html&src=conference&coord_type=gcj02`;
+      url = 'https://map.baidu.com/search/?q=贵阳东景希尔顿酒店&lat=26.656407&lng=106.628743';
     } else if (app === 'tencent') {
-      // 腾讯地图
-      url = `https://apis.map.qq.com/uri/v1/marker?marker=coord:${lat},${lng};title:${name};addr:${address}&referer=conference`;
+      url = 'https://map.qq.com/marker?lat=26.650689&lng=106.622409&title=贵阳东景希尔顿酒店';
     }
 
     if (url) {
-      window.open(url, '_blank');
+      window.open(url, '_blank', 'noopener,noreferrer');
     }
     setShowMapSelector(false);
   };

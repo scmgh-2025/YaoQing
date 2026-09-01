@@ -17,9 +17,9 @@ export const INVITATION_CONFIG: ConferenceConfig = {
     longitude: 106.6318,
     organizer: '贵旅数网科技有限公司',
     coOrganizer: '云码通数据运营股份有限公司',
-    contactName: '刘彬',
-    contactPhone: '19985754909',
-    contactPhoneTel: '19985754909',
+    contactName: 'XXX',
+    contactPhone: 'XXX',
+    contactPhoneTel: 'XXX',
   },
 
   styleTokens: {
