@@ -24,7 +24,7 @@ const MAPS: Record<
     web: string;
   }
 > = (() => {
-  const { name, gcjLat, gcjLng } = VENUE;
+  const { name, address, gcjLat, gcjLng } = VENUE;
   const encName = encodeURIComponent(name);
   return {
     amap: {
@@ -47,13 +47,25 @@ const MAPS: Record<
       label: '百度地图',
       short: '百度',
       accent: '#3385FF',
-      // 传入 GCJ-02，必须声明 coord_type=gcj02，由百度自动转换 BD-09
-      scheme: `baidumap://map/navi?location=${gcjLat},${gcjLng}&title=${encName}&coord_type=gcj02&region=${encodeURIComponent('贵阳')}&src=conference`,
-      // 官方导航 API 页面：带真实导航路线 + 内嵌「打开百度地图」唤起按钮
-      web: `https://api.map.baidu.com/direction?destination=${gcjLat},${gcjLng}&mode=driving&origin=curlocation&coord_type=gcj02&output=html&src=conference&title=${encName}`,
+      // 按平台拆分 Scheme：iOS 用 map/navi，Android 用 bdapp://map/direction 经典格式
+      scheme: buildBaiduScheme(encName, gcjLat, gcjLng),
+      // marker 免 key 单点页：渲染红标+名称的定位页，页面内自带「到这儿去/导航」唤起按钮；
+      // 若接口失效（跳回首页），页面上已有「复制地址」按钮可引导用户复制到百度搜索兜底
+      web: `https://api.map.baidu.com/marker?location=${gcjLat},${gcjLng}&title=${encName}&content=${encodeURIComponent(address)}&output=html&coord_type=gcj02&src=conference`,
     },
   };
 })();
+
+/** 百度地图 Scheme 按平台区分：iOS 用 map/navi，Android 用 bdapp://map/direction */
+function buildBaiduScheme(encName: string, lat: number, lng: number): string {
+  const isIOS =
+    typeof navigator !== 'undefined' && /iP(hone|od|ad)/i.test(navigator.userAgent);
+  if (isIOS) {
+    return `baidumap://map/navi?location=${lat},${lng}&title=${encName}&coord_type=gcj02&src=conference`;
+  }
+  // Android / 桌面默认：经典顺向格式，目的地坐标优先、名称辅助
+  return `bdapp://map/direction?destination=name:${encName}|latlng:${lat},${lng}&coord_type=gcj02&mode=driving&src=conference`;
+}
 
 interface GuidePageProps {
   isActive: boolean;
