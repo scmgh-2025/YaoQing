@@ -34,7 +34,7 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
 
       {/* 2. Timeline List in Scrollable Container */}
       <div
-        className="my-auto py-2 max-h-[62vh] overflow-y-auto overscroll-contain touch-pan-y no-scrollbar pr-1 relative"
+        className="my-auto py-2 max-h-[62vh] overflow-y-auto overscroll-contain touch-pan-y no-scrollbar pr-1 relative rounded-2xl border border-[#E2E8F0] bg-white/40"
         onTouchStart={(e) => e.stopPropagation()}
         onTouchMove={(e) => e.stopPropagation()}
         onTouchEnd={(e) => e.stopPropagation()}
