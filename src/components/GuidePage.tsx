@@ -49,7 +49,8 @@ const MAPS: Record<
       accent: '#3385FF',
       // 传入 GCJ-02，必须声明 coord_type=gcj02，由百度自动转换 BD-09
       scheme: `baidumap://map/direction?destination=latlng:${gcjLat},${gcjLng}|name:${encName}&coord_type=gcj02&mode=driving&region=${encodeURIComponent('贵阳')}&src=conference`,
-      web: `https://map.baidu.com/direction?destination=latlng:${gcjLat},${gcjLng}|name:${encName}&coord_type=gcj02&mode=driving&region=${encodeURIComponent('贵阳')}&src=conference`,
+      // map.baidu.com/direction 已废弃（404），改用搜索页 + coord_type=gcj02
+      web: `https://map.baidu.com/search/?q=${encName}&latlng=${gcjLat},${gcjLng}&coord_type=gcj02&region=${encodeURIComponent('贵阳')}`,
     },
   };
 })();
@@ -179,23 +180,37 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
             </h3>
           </div>
 
-          <p className="text-xs sm:text-[13px] leading-relaxed text-[#6B7280] mb-4">
-            {theme.address}
+          <p className="text-sm sm:text-[15px] leading-relaxed text-[#6B7280] mb-4">
+            {(() => {
+              const keyword = theme.venueText;
+              const addr = theme.address;
+              const idx = addr.indexOf(keyword);
+              if (idx >= 0) {
+                return (
+                  <>
+                    {addr.slice(0, idx)}
+                    <span className="font-bold text-[#1F2933]">{keyword}</span>
+                    {addr.slice(idx + keyword.length)}
+                  </>
+                );
+              }
+              return addr;
+            })()}
           </p>
 
-          <div className="flex items-center gap-2 pt-2 border-t border-[#F0F2F5]">
+          <div className="flex flex-col items-stretch gap-2 pt-2 border-t border-[#F0F2F5]">
             <button
               onClick={openMapSelector}
-              className="flex-1 py-2 px-3 rounded-xl bg-[#DFF4FF]/60 hover:bg-[#DFF4FF] text-[#4A90E2] text-xs font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 cursor-pointer"
+              className="w-full py-3 px-4 rounded-xl bg-[#DFF4FF]/60 hover:bg-[#DFF4FF] text-[#4A90E2] text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer min-h-[44px]"
             >
-              <Navigation className="w-3.5 h-3.5 text-[#56C596]" />
+              <Navigation className="w-4 h-4 text-[#56C596]" />
               <span>一键导航</span>
             </button>
             <button
               onClick={handleCopyAddress}
-              className="py-2 px-3.5 rounded-xl bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#6B7280] text-xs font-medium flex items-center justify-center gap-1 transition-all active:scale-95 cursor-pointer"
+              className="w-full py-3 px-4 rounded-xl bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#6B7280] text-sm font-medium flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer min-h-[44px]"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-[#56C596]" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? <Check className="w-4 h-4 text-[#56C596]" /> : <Copy className="w-4 h-4" />}
               <span>{copied ? '已复制' : '复制地址'}</span>
             </button>
           </div>
@@ -218,10 +233,10 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
           </div>
 
           <div className="flex items-baseline justify-between mb-4">
-            <span className="text-sm font-bold text-[#1F2933] tracking-wide">
+            <span className="text-base font-bold text-[#1F2933] tracking-wide">
               {theme.contactPhone}
             </span>
-            <span className="text-xs text-[#6B7280]">
+            <span className="text-sm text-[#6B7280]">
               （联系人：{theme.contactName}）
             </span>
           </div>
@@ -242,32 +257,13 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
           initial={{ opacity: 0 }}
           animate={isActive ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="p-3 rounded-xl bg-white/60 border border-white text-center text-[11px] text-[#9CA3AF]"
+          className="p-3 rounded-xl bg-white/60 border border-white text-center text-sm text-[#9CA3AF]"
         >
           <span>温馨提示：请参会嘉宾提前签到入场</span>
         </motion.div>
       </div>
 
-      {/* 3. Prominent One-click Navigation Main Button (邀请函内容末尾) */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="mt-4 shrink-0"
-      >
-        <button
-          onClick={openMapSelector}
-          className="w-full py-4 px-5 rounded-2xl bg-gradient-to-r from-[#4A90E2] to-[#56C596] text-white text-base font-bold flex items-center justify-center gap-2.5 shadow-lg shadow-[#4A90E2]/30 transition-all active:scale-[0.98] cursor-pointer min-h-[56px]"
-        >
-          <Navigation className="w-5 h-5" />
-          <span>一键导航</span>
-        </button>
-        <p className="text-center text-[11px] text-[#6B7280] mt-2">
-          前往 {theme.venueText}・自动唤起高德 / 百度 / 腾讯地图
-        </p>
-      </motion.div>
-
-      {/* 4. Bottom Actions: Return to Top / Share Poster */}
+      {/* 3. Bottom Actions: Return to Top / Share Poster */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}

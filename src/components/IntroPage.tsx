@@ -54,7 +54,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ isActive, onNext }) => {
         <div className="w-10 h-1 rounded-full bg-gradient-to-r from-[#4A90E2] to-[#56C596] mb-3.5" />
 
         {/* Intro Body Text (Line-height 1.8, Medium Grey, Justified) */}
-        <p className="text-base sm:text-[17px] leading-[1.8] text-[#6B7280] text-justify tracking-wide">
+        <p className="text-[17px] sm:text-lg leading-[1.85] text-[#6B7280] text-justify tracking-wide indent-6">
           {introText}
         </p>
       </motion.div>

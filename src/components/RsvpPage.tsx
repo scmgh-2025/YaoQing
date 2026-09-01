@@ -34,7 +34,7 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
   const [formData, setFormData] = useState<RsvpFormData>({
     companyName: '',
     attendeeName: '',
-    attendeeCount: 1,
+    attendeeCount: '',
     phone: '',
     remark: '',
   });
@@ -335,7 +335,7 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
         <h2 className="text-2xl sm:text-3xl font-bold text-[#1F2933] tracking-tight">
           参会回执
         </h2>
-        <p className="text-xs text-[#6B7280] mt-0.5">
+        <p className="text-sm text-[#6B7280] mt-1">
           请填写以下信息完成报名，我们将为您预留席位
         </p>
       </motion.div>
@@ -433,9 +433,11 @@ export const RsvpPage: React.FC<RsvpPageProps> = ({ isActive, onNext }) => {
                 type="number"
                 min={1}
                 max={20}
+                placeholder="请输入参会人数"
                 value={formData.attendeeCount}
                 onChange={(e) => {
-                  const val = parseInt(e.target.value) || 1;
+                  const raw = e.target.value;
+                  const val = raw === '' ? '' : Math.min(20, Math.max(1, parseInt(raw) || 1));
                   setFormData({ ...formData, attendeeCount: val });
                 }}
                 className="w-full px-3 py-2 text-sm sm:text-base bg-white border border-[#E2E8F0] rounded-lg outline-none focus:border-[#4A90E2] focus:ring-3 focus:ring-[#4A90E2]/15"

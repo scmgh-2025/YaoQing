@@ -30,7 +30,7 @@ export interface AgendaItem {
 export interface RsvpFormData {
   companyName: string;
   attendeeName: string;
-  attendeeCount: number;
+  attendeeCount: number | '';
   phone: string;
   remark: string;
   submittedAt?: string;

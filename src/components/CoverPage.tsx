@@ -77,11 +77,9 @@ export const CoverPage: React.FC<CoverPageProps> = ({ isActive }) => {
             <div className="text-base font-semibold text-[#6B7280] tracking-wider">
               会议地点
             </div>
-            <div className="text-base sm:text-[17px] font-semibold text-[#1F2933] mt-1">
-              {theme.venueText}
-              <span className="text-[#6B7280] font-normal ml-1 text-sm">
-                （{theme.venueDetail}）
-              </span>
+            <div className="text-base sm:text-[17px] font-semibold text-[#1F2933] mt-1 leading-relaxed">
+              <div>{theme.venueText}</div>
+              <div className="mt-1">（{theme.venueDetail}）</div>
             </div>
           </div>
         </motion.div>

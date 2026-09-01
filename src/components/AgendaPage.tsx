@@ -34,16 +34,15 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
 
       {/* 2. Timeline List in Scrollable Container */}
       <div
-        className="my-auto py-2 max-h-[62vh] overflow-y-auto overscroll-contain touch-pan-y no-scrollbar pr-1 relative rounded-2xl border border-[#E2E8F0] bg-white/40"
+        className="my-auto py-2 max-h-[62vh] overflow-y-auto overscroll-contain touch-pan-y no-scrollbar pr-1 rounded-2xl border border-[#E2E8F0] bg-white/40"
         onTouchStart={(e) => e.stopPropagation()}
         onTouchMove={(e) => e.stopPropagation()}
         onTouchEnd={(e) => e.stopPropagation()}
         onWheel={(e) => e.stopPropagation()}
       >
-        {/* Continuous Left Timeline Line */}
-        <div className="absolute top-4 bottom-4 left-[15px] w-[2px] bg-[#E2E8F0] z-0" />
-
-        <div className="space-y-3.5 relative z-10">
+        <div className="space-y-3.5 relative">
+          {/* Continuous Left Timeline Line (放在内容容器上，确保贯穿所有节点) */}
+          <div className="absolute top-4 bottom-4 left-[15px] w-[2px] bg-[#E2E8F0] z-0" />
           {agenda.map((item, idx) => {
             return (
               <motion.div
@@ -54,7 +53,7 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
                 className="flex items-start gap-3.5"
               >
                 {/* Solid Cyan/Mint Round Dot on Timeline */}
-                <div className="w-[32px] flex items-center justify-center shrink-0 pt-3">
+                <div className="w-[32px] flex items-center justify-center shrink-0 pt-3 relative z-10">
                   <div className="w-3 h-3 rounded-full bg-gradient-to-tr from-[#4A90E2] to-[#56C596] ring-4 ring-white shadow-xs" />
                 </div>
 

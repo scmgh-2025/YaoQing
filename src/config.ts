@@ -104,16 +104,16 @@ export const INVITATION_CONFIG: ConferenceConfig = {
     },
     {
       id: 'agenda-3',
-      duration: '40 分钟',
+      duration: '30 分钟',
       title: '专家主题演讲',
       subItems: [
         {
           title: '酒店行业现实困境与转型破局之路',
-          duration: '20 分钟',
+          duration: '15 分钟',
         },
         {
           title: 'AI 技术浪潮：全社会变革与文旅酒店行业能力边界',
-          duration: '20 分钟',
+          duration: '15 分钟',
         },
       ],
     },
