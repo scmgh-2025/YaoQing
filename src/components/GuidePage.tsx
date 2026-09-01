@@ -65,6 +65,7 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
   const { theme } = INVITATION_CONFIG;
   const [copied, setCopied] = useState(false);
   const [showMapSelector, setShowMapSelector] = useState(false);
+  const [launchingMap, setLaunchingMap] = useState<{ label: string } | null>(null);
 
   const handleCopyAddress = () => {
     const textToCopy = theme.venueText || '贵阳东景希尔顿酒店';
@@ -89,6 +90,7 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
   const launchMap = (app: MapApp) => {
     const map = MAPS[app];
     setShowMapSelector(false);
+    setLaunchingMap({ label: map.label });
 
     let finished = false;
     const cleanup = () => {
@@ -96,6 +98,7 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
       window.removeEventListener('pagehide', onHide);
       window.removeEventListener('blur', onHide);
       document.removeEventListener('visibilitychange', onVisible);
+      setLaunchingMap(null);
     };
     const done = () => {
       if (!finished) {
@@ -120,17 +123,18 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
     document.body.appendChild(schemeFrame);
     setTimeout(() => schemeFrame.remove(), 800);
 
-    // 2.5s 内未唤起（未安装或微信拦截）即降级为官方 H5 页面（其亦会尝试唤起 App）
+    // 1.8s 内未唤起（未安装或微信拦截）即降级为官方 H5 页面（其亦会尝试唤起 App）
     const timer = window.setTimeout(() => {
       if (!finished) {
         finished = true;
         window.removeEventListener('pagehide', onHide);
         window.removeEventListener('blur', onHide);
         document.removeEventListener('visibilitychange', onVisible);
+        setLaunchingMap(null);
         const w = window.open(map.web, '_blank', 'noopener,noreferrer');
         if (!w) window.location.href = map.web;
       }
-    }, 2500);
+    }, 1800);
   };
 
   const openMapSelector = () => setShowMapSelector(true);
@@ -377,6 +381,29 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
               </div>
             </motion.div>
           </div>
+        )}
+      </AnimatePresence>
+
+      {/* Launching Map Loading Overlay */}
+      <AnimatePresence>
+        {launchingMap && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/35 backdrop-blur-xs"
+          >
+            <div className="flex flex-col items-center gap-3 px-6 py-5 rounded-2xl bg-white/95 shadow-2xl border border-[#F0F2F5]">
+              <div className="relative w-10 h-10">
+                <div className="absolute inset-0 rounded-full border-2 border-[#DFF4FF]" />
+                <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#4A90E2] animate-spin" />
+              </div>
+              <p className="text-sm font-semibold text-[#1F2933]">
+                正在打开 {launchingMap.label}…
+              </p>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
 
