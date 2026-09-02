@@ -34,7 +34,7 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
 
       {/* 2. Timeline List in Scrollable Container */}
       <div
-        className="my-auto py-2 max-h-[62vh] overflow-y-auto overscroll-contain touch-pan-y no-scrollbar pr-1 rounded-2xl border border-[#E2E8F0] bg-white/40"
+        className="my-auto py-2 max-h-[68vh] overflow-y-auto overscroll-contain touch-pan-y no-scrollbar pr-1 rounded-2xl border border-[#E2E8F0] bg-white/40"
         onTouchStart={(e) => e.stopPropagation()}
         onTouchMove={(e) => e.stopPropagation()}
         onTouchEnd={(e) => e.stopPropagation()}
@@ -59,14 +59,14 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
 
                 {/* Right Side Agenda Card */}
                 <div
-                  className={`flex-1 rounded-xl p-3.5 sm:p-4 shadow-card-soft transition-all ${
+                  className={`flex-1 rounded-xl p-3 sm:p-3.5 shadow-card-soft transition-all ${
                     item.isHighlight
                       ? 'bg-white border border-[#F0F2F5]'
                       : 'bg-white border border-[#F0F2F5]'
                   }`}
                 >
                   {/* Title & Time Range */}
-                  <div className="flex items-start justify-between gap-2 mb-1.5">
+                  <div className="flex items-center justify-between gap-2">
                     <h4 className="text-sm sm:text-base font-bold text-[#1F2933] leading-snug">
                       {item.title}
                     </h4>
@@ -80,7 +80,7 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
 
                   {/* Speaker Details (Indented) */}
                   {item.speaker && (
-                    <div className="pl-2 border-l-2 border-[#E3F7EF] mt-1.5 space-y-0.5">
+                    <div className="pl-2 border-l-2 border-[#E3F7EF] mt-1 space-y-0.5">
                       <p className="text-xs text-[#4A90E2] font-medium">
                         {item.speaker}
                       </p>
@@ -94,7 +94,7 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
 
                   {/* Sub-items (for Keynote / Launch sessions) */}
                   {item.subItems && item.subItems.length > 0 && (
-                    <div className="mt-2.5 pt-2 border-t border-[#F0F2F5] space-y-1.5">
+                    <div className="mt-1.5 pt-1.5 border-t border-[#F0F2F5] space-y-1">
                       {item.subItems.map((sub, sIdx) => (
                         <div
                           key={sIdx}
