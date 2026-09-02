@@ -4,10 +4,11 @@ export interface GuestItem {
   roleType: 'expert' | 'guest'; // 'expert' -> 特邀专家 (with cyan-mint subtle border), 'guest' -> 特邀嘉宾
   roleLabel: string;
   title: string;
-  organization: string;
+  organization: string | string[];
   bio: string;
   avatarText?: string;
   avatarBg?: string;
+  avatarUrl?: string;
 }
 
 export interface AgendaSubItem {

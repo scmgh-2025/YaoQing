@@ -61,20 +61,21 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
                 <div
                   className={`flex-1 rounded-xl p-3.5 sm:p-4 shadow-card-soft transition-all ${
                     item.isHighlight
-                      ? 'bg-white border-l-4 border-l-[#4A90E2] border border-[#F0F2F5]'
+                      ? 'bg-white border border-[#F0F2F5]'
                       : 'bg-white border border-[#F0F2F5]'
                   }`}
                 >
-                  {/* Top: Title & Duration Tag */}
+                  {/* Title & Time Range */}
                   <div className="flex items-start justify-between gap-2 mb-1.5">
                     <h4 className="text-[13.5px] sm:text-sm font-bold text-[#1F2933] leading-snug">
                       {item.title}
                     </h4>
-                    {/* Duration Highlight Tag */}
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#DFF4FF] text-[#4A90E2] text-[10px] font-semibold shrink-0 border border-[#4A90E2]/20">
-                      <Clock className="w-2.5 h-2.5 text-[#56C596]" />
-                      {item.duration}
-                    </span>
+                    {item.timeRange && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#DFF4FF] text-[#4A90E2] text-[11px] font-semibold shrink-0 border border-[#4A90E2]/20">
+                        <Clock className="w-2.5 h-2.5 text-[#56C596]" />
+                        {item.timeRange}
+                      </span>
+                    )}
                   </div>
 
                   {/* Speaker Details (Indented) */}
@@ -99,11 +100,8 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
                           key={sIdx}
                           className="px-2.5 py-2 rounded-lg bg-[#F8FAFC] border border-[#F0F2F5]"
                         >
-                          <div className="flex items-start justify-between gap-2 text-xs font-semibold text-[#1F2933]">
+                          <div className="flex items-start gap-2 text-xs font-semibold text-[#1F2933]">
                             <span className="leading-snug">{sub.title}</span>
-                            <span className="text-[10.5px] text-[#4A90E2] bg-[#DFF4FF] px-1.5 py-0.5 rounded shrink-0 font-medium">
-                              {sub.duration}
-                            </span>
                           </div>
                           {sub.speaker && (
                             <div className="text-[11px] text-[#6B7280] mt-1">

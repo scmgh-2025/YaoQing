@@ -8,7 +8,7 @@ export const INVITATION_CONFIG: ConferenceConfig = {
   theme: {
     title: '智赋文旅・数启新局',
     subTitle: '酒店场景 AI 智能体创新实践交流大会',
-    dateText: '2026年9月11日（周五）14:30—17:30',
+    dateText: '2026年9月17日（周四）14:30—17:30',
     venueText: '贵阳东景希尔顿酒店',
     venueDetail: 'B2 贵阳宴会厅 1',
     address: '贵州省贵阳市观山湖区金阳北路 277 号，贵阳东景希尔顿酒店 ——B2 贵阳宴会厅 1',
@@ -18,8 +18,8 @@ export const INVITATION_CONFIG: ConferenceConfig = {
     organizer: '贵旅数网科技有限公司',
     coOrganizer: '云码通数据运营股份有限公司',
     contactName: 'XXX',
-    contactPhone: 'XXX',
-    contactPhoneTel: 'XXX',
+    contactPhone: '1234567890',
+    contactPhoneTel: '1234567890',
   },
 
   styleTokens: {
@@ -34,9 +34,9 @@ export const INVITATION_CONFIG: ConferenceConfig = {
     borderColor: '#F0F2F5',       // 极浅灰边框
   },
 
-  invitationText: '衷心邀请您莅临本次智赋文旅・数启新局 — 文旅场景 AI 智能体创新实践交流大会，期盼与您相聚贵阳，共探 AI 赋能文旅产业的实践路径，携手开启文旅数字化崭新格局。',
+  invitationText: '衷心邀请您莅临本次智赋文旅・数启新局 — 酒店场景 AI 智能体创新实践交流大会，期盼与您相聚贵阳，共探 AI 赋能文旅产业的实践路径，携手开启文旅数字化崭新格局。',
 
-  introText: '当前 AI 技术加速赋能文旅产业变革，为酒店带来全新发展机遇。本次大会聚焦文旅 AI 落地实践，邀请行业领导、协会、酒店、合作伙伴及媒体齐聚现场，分享行业前沿观点，发布酒店智能体核心方案，与各位嘉宾共探产业升级新机遇。',
+  introText: '当前 AI 技术加速赋能文旅产业变革，为酒店带来全新发展机遇。本次大会聚焦酒店智能体落地实践，邀请行业领导、协会、酒店、合作伙伴及媒体齐聚现场，分享行业前沿观点，发布酒店智能体核心方案，与各位嘉宾共探产业升级新机遇。',
 
   introBannerUrl: 'https://i.mji.rip/2026/08/31/79a1ed72fa77a878d2b088f57755235d.md.png',
 
@@ -50,60 +50,56 @@ export const INVITATION_CONFIG: ConferenceConfig = {
   guests: [
     {
       id: 'guest-1',
-      name: '李斌',
+      name: '刘勇军',
       roleType: 'expert',
-      roleLabel: '特邀专家',
-      title: '特邀专家',
-      organization: '贵州省住宿业协会',
-      bio: '主导文旅产业数字化转型与数字生态战略部署，引领智慧文旅多场景创新实践。',
+      roleLabel: '特邀住宿行业专家',
+      title: '特邀嘉宾',
+      avatarUrl: '/YaoQing/刘勇军.png',
+      organization: [
+        '贵州省住宿行业协会副会长',
+        '贵州瑞锦格林酒店管理公司总经理',
+        '贵大戈友会荣誉会长',
+      ],
       avatarBg: '#EBF7FF',
     },
     {
       id: 'guest-2',
-      name: '张明远 博士',
+      name: '黄涛',
       roleType: 'expert',
-      roleLabel: '特邀专家',
+      roleLabel: '特邀AI专家',
       title: '首席 AI 架构科学家',
-      organization: '人工智能协会',
-      bio: '深耕大模型与垂直智能体在文旅、酒旅服务场景的工程化落地与认知交互演化。',
+      avatarUrl: '/YaoQing/黄涛.jpeg',
+      organization: [
+        '华创云信数字技术股份有限公司AI技术首席运营官',
+        '云码通数据运营股份有限公司总经理',
+      ],
       avatarBg: '#EDFAF4',
-    },
-    {
-      id: 'guest-3',
-      name: '陈清华',
-      roleType: 'guest',
-      roleLabel: '特邀嘉宾',
-      title: '中国饭店协会高级顾问',
-      organization: 'XXXX',
-      bio: '二十年奢华酒店运营及智慧中台架构经验，洞悉酒店降本增效与数字化体验升级。',
-      avatarBg: '#F0F7FE',
-    },
-    {
-      id: 'guest-4',
-      name: '李雅琳',
-      roleType: 'guest',
-      roleLabel: '特邀嘉宾',
-      title: '副总裁 / 数字化运营负责人',
-      organization: 'XXXX',
-      bio: '专注文旅场景线上线下一体化流量运营与多模态 AI 导览互动体系构建。',
-      avatarBg: '#F3FBF7',
     },
   ],
 
   agenda: [
     {
+      id: 'agenda-0',
+      timeRange: '14:00 - 14:30',
+      duration: '30 分钟',
+      title: '签到入场',
+    },
+    {
       id: 'agenda-1',
+      timeRange: '14:30 - 14:35',
       duration: '5 分钟',
-      title: '主持人开场并介绍到场嘉宾',
+      title: '主持人开场',
     },
     {
       id: 'agenda-2',
+      timeRange: '14:35 - 14:40',
       duration: '5 分钟',
       title: '贵旅集团领导致辞',
       isHighlight: true,
     },
     {
       id: 'agenda-3',
+      timeRange: '14:40 - 15:10',
       duration: '30 分钟',
       title: '专家主题演讲',
       subItems: [
@@ -119,8 +115,9 @@ export const INVITATION_CONFIG: ConferenceConfig = {
     },
     {
       id: 'agenda-4',
+      timeRange: '15:10 - 15:50',
       duration: '40 分钟',
-      title: '酒店智能体全量解决方案发布',
+      title: '酒店智能体解决方案发布',
       isHighlight: true,
       subItems: [
         {
@@ -139,11 +136,13 @@ export const INVITATION_CONFIG: ConferenceConfig = {
     },
     {
       id: 'agenda-5',
+      timeRange: '15:50 - 16:00',
       duration: '10 分钟',
       title: '合作签约仪式',
     },
     {
       id: 'agenda-6',
+      timeRange: '16:00 - 16:40',
       duration: '40 分钟',
       title: '圆桌座谈',
     },
