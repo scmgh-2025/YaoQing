@@ -13,7 +13,7 @@ export const CoverPage: React.FC<CoverPageProps> = ({ isActive }) => {
     <div
       className="relative w-full h-full flex flex-col justify-between py-12 px-6 sm:px-8 max-w-lg mx-auto select-none overflow-hidden"
       style={{
-        backgroundImage: "url('/YaoQing/cover-bg.png')",
+        backgroundImage: "url('/YaoQing/封面.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
