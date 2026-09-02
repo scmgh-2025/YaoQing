@@ -11,7 +11,7 @@ export const INVITATION_CONFIG: ConferenceConfig = {
     dateText: '2026年9月17日（周四）14:30—17:30',
     venueText: '贵阳东景希尔顿酒店',
     venueDetail: 'B2 贵阳宴会厅 1',
-    address: '贵州省贵阳市观山湖区金阳北路 277 号，贵阳东景希尔顿酒店 ——B2 贵阳宴会厅 1',
+    address: '贵阳市观山湖区金阳北路 277 号，贵阳东景希尔顿酒店 ——B2 贵阳宴会厅 1',
     mapUrl: 'https://apis.map.qq.com/uri/v1/marker?marker=coord:26.6348,106.6318;title:贵阳东景希尔顿酒店;addr:贵阳市观山湖区金阳北路277号',
     latitude: 26.6348,
     longitude: 106.6318,
@@ -117,7 +117,7 @@ export const INVITATION_CONFIG: ConferenceConfig = {
       id: 'agenda-4',
       timeRange: '15:10 - 15:50',
       duration: '40 分钟',
-      title: '酒店智能体解决方案发布',
+      title: '解决方案发布',
       isHighlight: true,
       subItems: [
         {

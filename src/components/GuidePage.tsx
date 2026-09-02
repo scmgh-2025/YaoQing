@@ -191,12 +191,12 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
             <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#DFF4FF] to-[#E3F7EF] flex items-center justify-center text-[#4A90E2] shrink-0">
               <MapPin className="w-4 h-4 text-[#4A90E2]" />
             </div>
-            <h3 className="text-sm font-bold text-[#1F2933]">
+            <h3 className="text-base font-bold text-[#1F2933]">
               参会地址
             </h3>
           </div>
 
-          <p className="text-sm sm:text-[15px] leading-relaxed text-[#6B7280] mb-4">
+          <p className="text-base sm:text-[17px] leading-relaxed text-[#6B7280] mb-4">
             {(() => {
               const keyword = theme.venueText;
               const addr = theme.address;
@@ -217,14 +217,14 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
           <div className="flex flex-row items-stretch gap-2 pt-2 border-t border-[#F0F2F5]">
             <button
               onClick={openMapSelector}
-              className="flex-1 py-2.5 px-4 rounded-xl bg-[#DFF4FF]/60 hover:bg-[#DFF4FF] text-[#4A90E2] text-sm sm:text-[15px] font-semibold flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
+              className="flex-1 py-2.5 px-4 rounded-xl bg-[#DFF4FF]/60 hover:bg-[#DFF4FF] text-[#4A90E2] text-base sm:text-[17px] font-semibold flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
             >
               <Navigation className="w-4 h-4 text-[#56C596]" />
               <span>一键导航</span>
             </button>
             <button
               onClick={handleCopyAddress}
-              className="flex-1 py-2.5 px-4 rounded-xl bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#6B7280] text-sm sm:text-[15px] font-medium flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
+              className="flex-1 py-2.5 px-4 rounded-xl bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#6B7280] text-base sm:text-[17px] font-medium flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
             >
               {copied ? <Check className="w-4 h-4 text-[#56C596]" /> : <Copy className="w-4 h-4" />}
               <span>{copied ? '已复制' : '复制地址'}</span>
@@ -243,16 +243,16 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
             <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#DFF4FF] to-[#E3F7EF] flex items-center justify-center text-[#56C596] shrink-0">
               <Phone className="w-4 h-4 text-[#56C596]" />
             </div>
-            <h3 className="text-sm font-bold text-[#1F2933]">
+            <h3 className="text-base font-bold text-[#1F2933]">
               联系咨询
             </h3>
           </div>
 
           <div className="flex items-baseline justify-between mb-4">
-            <span className="text-base font-bold text-[#1F2933] tracking-wide">
+            <span className="text-lg font-bold text-[#1F2933] tracking-wide">
               {theme.contactPhone}
             </span>
-            <span className="text-sm text-[#6B7280]">
+            <span className="text-base text-[#6B7280]">
               （联系人：{theme.contactName}）
             </span>
           </div>
@@ -260,7 +260,7 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
           <div className="pt-2 border-t border-[#F0F2F5]">
             <button
               onClick={handleCall}
-              className="w-full py-2.5 px-3 rounded-xl bg-[#E3F7EF]/70 hover:bg-[#E3F7EF] text-[#2E7D5D] text-sm sm:text-[15px] font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 cursor-pointer"
+              className="w-full py-2.5 px-3 rounded-xl bg-[#E3F7EF]/70 hover:bg-[#E3F7EF] text-[#2E7D5D] text-base sm:text-[17px] font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 cursor-pointer"
             >
               <Phone className="w-3.5 h-3.5 text-[#56C596]" />
               <span>拨打电话</span>
@@ -273,8 +273,7 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
           initial={{ opacity: 0 }}
           animate={isActive ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="p-3 rounded-xl bg-white/60 border border-white text-center text-sm text-[#9CA3AF]"
-        >
+          className="p-3 rounded-xl bg-white/60 border border-white text-center text-base text-[#9CA3AF]">
           <span>温馨提示：请参会嘉宾提前签到入场</span>
         </motion.div>
       </div>

@@ -67,11 +67,11 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
                 >
                   {/* Title & Time Range */}
                   <div className="flex items-start justify-between gap-2 mb-1.5">
-                    <h4 className="text-[13.5px] sm:text-sm font-bold text-[#1F2933] leading-snug">
+                    <h4 className="text-sm sm:text-base font-bold text-[#1F2933] leading-snug">
                       {item.title}
                     </h4>
                     {item.timeRange && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#DFF4FF] text-[#4A90E2] text-[11px] font-semibold shrink-0 border border-[#4A90E2]/20">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#DFF4FF] text-[#4A90E2] text-xs font-semibold shrink-0 border border-[#4A90E2]/20">
                         <Clock className="w-2.5 h-2.5 text-[#56C596]" />
                         {item.timeRange}
                       </span>
@@ -100,7 +100,7 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
                           key={sIdx}
                           className="px-2.5 py-2 rounded-lg bg-[#F8FAFC] border border-[#F0F2F5]"
                         >
-                          <div className="flex items-start gap-2 text-xs font-semibold text-[#1F2933]">
+                          <div className="flex items-start gap-2 text-sm font-semibold text-[#1F2933]">
                             <span className="leading-snug">{sub.title}</span>
                           </div>
                           {sub.speaker && (

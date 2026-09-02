@@ -75,7 +75,7 @@ export const GuestsPage: React.FC<GuestsPageProps> = ({ isActive }) => {
                 <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
                   <div>
                     {/* Role Tag */}
-                    <span className="inline-block text-xs font-semibold tracking-wider px-2.5 py-1 rounded-md bg-[#4A90E2]/10 text-[#4A90E2] mb-2">
+                    <span className="inline-block text-sm font-semibold tracking-wider px-2.5 py-1 rounded-md bg-[#4A90E2]/10 text-[#4A90E2] mb-2">
                       {guest.roleLabel || '特邀嘉宾'}
                     </span>
 
@@ -90,7 +90,7 @@ export const GuestsPage: React.FC<GuestsPageProps> = ({ isActive }) => {
                     {orgList.map((line, i) => (
                       <p
                         key={i}
-                        className="text-xs sm:text-[13px] text-[#4B5563] leading-relaxed flex items-start gap-1.5"
+                        className="text-sm sm:text-[15px] text-[#4B5563] leading-relaxed flex items-start gap-1.5"
                       >
                         <span className="inline-block w-1 h-1 rounded-full bg-[#56C596] mt-1.5 shrink-0" />
                         <span>{line}</span>
