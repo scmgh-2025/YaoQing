@@ -38,7 +38,7 @@ export const INVITATION_CONFIG: ConferenceConfig = {
 
   introText: '当前 AI 技术加速赋能文旅产业变革，为酒店带来全新发展机遇。本次大会聚焦酒店智能体落地实践，邀请行业领导、协会、酒店、合作伙伴及媒体齐聚现场，分享行业前沿观点，发布酒店智能体核心方案，与各位嘉宾共探产业升级新机遇。',
 
-  introBannerUrl: 'https://i.mji.rip/2026/08/31/79a1ed72fa77a878d2b088f57755235d.md.png',
+  introBannerUrl: '/YaoQing/图标.png',
 
   introTags: [
     'AI 智能体落地',

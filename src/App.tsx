@@ -181,7 +181,7 @@ export default function App() {
           className="fixed bottom-9 inset-x-0 z-30 flex flex-col items-center pointer-events-none"
         >
           <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-white/70 backdrop-blur-xs text-[11px] text-[#6B7280] shadow-xs animate-bounce-down">
-            <span>向下滑动翻页</span>
+            <span>滑动翻页</span>
             <ChevronDown className="w-3.5 h-3.5 text-[#4A90E2]" />
           </div>
         </motion.div>
