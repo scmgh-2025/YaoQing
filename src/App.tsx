@@ -46,7 +46,7 @@ const SHARE_DATA: WxShareOpts = {
   title: '文旅场景AI智能体创新实践交流大会',
   desc: '【智赋文旅·数启新程】文旅场景AI智能体创新实践交流大会',
   link: 'https://scmgh-2025.github.io/YaoQing/',
-  imgUrl: 'https://i.mij.rip/2026/09/02/b104277602872b24747fdcadacbfc34e.jpeg',
+  imgUrl: 'https://scmgh-2025.github.io/YaoQing/%E5%B0%81%E9%9D%A2.png',
 };
 
 /**
