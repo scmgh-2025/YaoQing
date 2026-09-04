@@ -44,7 +44,7 @@ interface WxShareOpts {
 /** 分享素材（与 index.html OG 标签保持一致） */
 const SHARE_DATA: WxShareOpts = {
   title: '文旅场景AI智能体创新实践交流大会',
-  desc: '【智赋文旅·数启新程】文旅场景AI智能体创新实践交流大会',
+  desc: '智赋文旅·数启新程 文旅场景AI智能体创新实践交流大会',
   link: 'https://scmgh-2025.github.io/YaoQing/',
   imgUrl: 'https://scmgh-2025.github.io/YaoQing/%E5%B0%81%E9%9D%A2.png',
 };
