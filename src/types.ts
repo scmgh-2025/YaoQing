@@ -43,6 +43,7 @@ export interface ConferenceConfig {
     title: string;
     subTitle: string;
     dateText: string;
+    timeText?: string;
     venueText: string;
     venueDetail: string;
     address: string;

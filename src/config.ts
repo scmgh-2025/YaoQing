@@ -8,10 +8,11 @@ export const INVITATION_CONFIG: ConferenceConfig = {
   theme: {
     title: '智赋文旅・数启新局',
     subTitle: '酒店场景 AI 智能体创新实践交流大会',
-    dateText: '2026年9月17日（周四）14:30—17:30',
+    dateText: '2026年9月16日（周三）',
+    timeText: '14:30—17:30',
     venueText: '贵阳东景希尔顿酒店',
-    venueDetail: 'B2 贵阳宴会厅 1',
-    address: '贵阳市观山湖区金阳北路 277 号，贵阳东景希尔顿酒店 ——B2 贵阳宴会厅 1',
+    venueDetail: '2楼 观山厅',
+    address: '贵阳市观山湖区金阳北路 277 号，贵阳东景希尔顿酒店 ——2楼 观山厅',
     mapUrl: 'https://apis.map.qq.com/uri/v1/marker?marker=coord:26.6348,106.6318;title:贵阳东景希尔顿酒店;addr:贵阳市观山湖区金阳北路277号',
     latitude: 26.6348,
     longitude: 106.6318,
@@ -139,12 +140,6 @@ export const INVITATION_CONFIG: ConferenceConfig = {
       timeRange: '15:50 - 16:00',
       duration: '10 分钟',
       title: '合作签约仪式',
-    },
-    {
-      id: 'agenda-6',
-      timeRange: '16:00 - 16:40',
-      duration: '40 分钟',
-      title: '圆桌座谈',
     },
   ],
 

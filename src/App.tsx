@@ -7,11 +7,134 @@ import { InvitationPage } from './components/InvitationPage';
 import { IntroPage } from './components/IntroPage';
 import { GuestsPage } from './components/GuestsPage';
 import { AgendaPage } from './components/AgendaPage';
-import { RsvpPage } from './components/RsvpPage';
 import { GuidePage } from './components/GuidePage';
 import { SharePosterModal } from './components/SharePosterModal';
 
-const TOTAL_PAGES = 7;
+/* ==========================================================================
+ * 微信 JS-SDK 类型声明（无需 npm 依赖，纯 TypeScript 声明）
+ * ========================================================================== */
+declare global {
+  interface Window {
+    wx?: {
+      config: (opts: WxConfigOpts) => void;
+      ready: (fn: () => void) => void;
+      error: (fn: (err: any) => void) => void;
+      updateAppMessageShareData: (opts: WxShareOpts) => void;
+      updateTimelineShareData: (opts: WxShareOpts) => void;
+    };
+  }
+}
+interface WxConfigOpts {
+  appId: string;
+  timestamp: number;
+  nonceStr: string;
+  signature: string;
+  jsApiList: string[];
+  openTagList?: string[];
+  debug?: boolean;
+}
+interface WxShareOpts {
+  title?: string;
+  desc?: string;
+  link?: string;
+  imgUrl?: string;
+}
+/* ========================================================================== */
+
+/** 分享素材（与 index.html OG 标签保持一致） */
+const SHARE_DATA: WxShareOpts = {
+  title: '文旅场景AI智能体创新实践交流大会',
+  desc: '【智赋文旅·数启新程】文旅场景AI智能体创新实践交流大会',
+  link: 'https://scmgh-2025.github.io/YaoQing/',
+  imgUrl: 'https://i.mij.rip/2026/09/02/b104277602872b24747fdcadacbfc34e.jpeg',
+};
+
+/**
+ * ================================================================
+ * ⚠️⚠️⚠️  关键：fetchSignature —— 微信签名占位函数  ⚠️⚠️⚠️
+ * ================================================================
+ *
+ * 【为什么不能纯前端生成签名？】
+ *   微信签名需要 access_token，而 access_token 要用公众号 AppSecret 换。
+ *   AppSecret 是绝对不能暴露在前端的 —— 任何人 F12 看到就能接管你的公众号。
+ *   所以签名必须由【后端服务】生成，再把结果返回给前端。
+ *
+ * 【后端怎么生成？】
+ *   1. 用 AppID + AppSecret 调微信 API → access_token（缓存 7200s）
+ *   2. 用 access_token 换 jsapi_ticket（缓存 7200s）
+ *   3. 拼串：`jsapi_ticket=xxx&noncestr=yyy&timestamp=zzz&url=<当前URL>`
+ *   4. 对上面的串做 SHA1 → 得到 signature
+ *   5. 返回 { appId, timestamp, nonceStr, signature } 给前端
+ *
+ * 【纯前端项目的替代方案】
+ *   - GitHub Pages 无后端，可用微信云开发 / Serverless（如腾讯云 SCF、阿里云 FC）
+ *   - 或用第三方签名服务：https://github.com/wechatpy/wechatpy （Python）
+ *   - 或干脆【只靠 OG 标签】—— 已经能独立生成分享卡片，JS-SDK 只是锦上添花
+ *
+ * 【上线前 TODO】
+ *   ✅ 把后端签名接口地址填到 fetchSignature 的 fetch() 里
+ *   ✅ 微信公众号后台「公众号设置 → 功能设置 → JS 接口安全域名」添加
+ *     scmgh-2025.github.io
+ *   ✅ 公众号后台「开发者接口 → 网页授权域名」添加 scmgh-2025.github.io
+ * ================================================================
+ */
+async function fetchSignature(url: string): Promise<{
+  appId: string;
+  timestamp: number;
+  nonceStr: string;
+  signature: string;
+} | null> {
+  // 示例：调用后端签名 API（需要后端先实现）
+  // try {
+  //   const res = await fetch(
+  //     `/api/wechat/signature?url=${encodeURIComponent(url)}`
+  //   );
+  //   if (!res.ok) return null;
+  //   return await res.json();
+  // } catch {
+  //   return null;
+  // }
+
+  // 当前纯前端占位：返回 null，JS-SDK 配置将跳过（OG 标签方案已生效）
+  console.warn('[wx-sdk] fetchSignature 未接入后端，JS-SDK 配置已跳过。OG 标签方案已独立生效，分享卡片不受影响。');
+  return null;
+}
+
+/** 在微信内自动配置 JS-SDK + 动态覆盖分享内容 */
+function setupWxSdk() {
+  const wx = window.wx;
+  if (!wx) return;
+  if (!/MicroMessenger/i.test(navigator.userAgent)) return; // 非微信环境跳过
+
+  // 签名 URL 必须与当前页面 URL（含 hash，不含 # 后内容）完全一致
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const configUrl = location.href.split('#')[0];
+
+  fetchSignature(configUrl).then((sig) => {
+    if (!sig) return;
+    try {
+      wx.config({
+        appId: sig.appId,
+        timestamp: sig.timestamp,
+        nonceStr: sig.nonceStr,
+        signature: sig.signature,
+        jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData'],
+        debug: false, // 调试时可改为 true 看弹窗日志
+      });
+      wx.ready(() => {
+        wx.updateAppMessageShareData({ ...SHARE_DATA }); // 分享给朋友
+        wx.updateTimelineShareData({ ...SHARE_DATA });   // 分享到朋友圈
+      });
+      wx.error((err) => {
+        console.warn('[wx-sdk] config 失败', err);
+      });
+    } catch (e) {
+      console.warn('[wx-sdk] 配置异常', e);
+    }
+  });
+}
+
+const TOTAL_PAGES = 6;
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -74,6 +197,23 @@ export default function App() {
       }
     }
   };
+
+  // ============================================================
+  // 微信 JS-SDK 自动配置（只在微信环境生效）
+  // 注意：签名由 fetchSignature() 负责，纯前端占位返回 null，
+  //       当前分享卡片靠 index.html 的 OG 标签方案独立生效
+  // ============================================================
+  useEffect(() => {
+    // 等 jweixin-1.6.0.js 脚本加载完成再配置
+    const waitWx = () => {
+      if (window.wx && typeof window.wx.config === 'function') {
+        setupWxSdk();
+      } else {
+        setTimeout(waitWx, 200);
+      }
+    };
+    waitWx();
+  }, []);
 
   // Keyboard navigation
   useEffect(() => {
@@ -140,14 +280,8 @@ export default function App() {
               />
             )}
             {currentPage === 5 && (
-              <RsvpPage
-                isActive={currentPage === 5}
-                onNext={() => goToPage(6)}
-              />
-            )}
-            {currentPage === 6 && (
               <GuidePage
-                isActive={currentPage === 6}
+                isActive={currentPage === 5}
                 onGoToTop={() => goToPage(0)}
                 onOpenSharePoster={() => setShowSharePoster(true)}
               />

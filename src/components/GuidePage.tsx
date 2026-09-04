@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MapPin, Phone, Navigation, Copy, Check, ExternalLink, Sparkles, X } from 'lucide-react';
+import { MapPin, Navigation, Copy, Check, ExternalLink, Sparkles, X, Calendar } from 'lucide-react';
 import { INVITATION_CONFIG } from '../config';
 
 /** 导航目的地（GCJ-02 坐标系），百度侧通过 coord_type=gcj02 声明，由其自动转为 BD-09 */
@@ -232,7 +232,7 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
           </div>
         </motion.div>
 
-        {/* Card 2: Contact Card (联系卡片) */}
+        {/* Card 2: Time Card (参会时间卡片) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -241,30 +241,16 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
         >
           <div className="flex items-center gap-2.5 mb-2.5">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#DFF4FF] to-[#E3F7EF] flex items-center justify-center text-[#56C596] shrink-0">
-              <Phone className="w-4 h-4 text-[#56C596]" />
+              <Calendar className="w-4 h-4 text-[#56C596]" />
             </div>
             <h3 className="text-base font-bold text-[#1F2933]">
-              联系咨询
+              参会时间
             </h3>
           </div>
 
-          <div className="flex items-baseline justify-between mb-4">
-            <span className="text-lg font-bold text-[#1F2933] tracking-wide">
-              {theme.contactPhone}
-            </span>
-            <span className="text-base text-[#6B7280]">
-              （联系人：{theme.contactName}）
-            </span>
-          </div>
-
-          <div className="pt-2 border-t border-[#F0F2F5]">
-            <button
-              onClick={handleCall}
-              className="w-full py-2.5 px-3 rounded-xl bg-[#E3F7EF]/70 hover:bg-[#E3F7EF] text-[#2E7D5D] text-base sm:text-[17px] font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-95 cursor-pointer"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#56C596]" />
-              <span>拨打电话</span>
-            </button>
+          <div className="text-base sm:text-[17px] font-bold text-[#1F2933] leading-relaxed">
+            <div>{theme.dateText}</div>
+            <div className="mt-1">{theme.timeText}</div>
           </div>
         </motion.div>
 
