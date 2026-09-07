@@ -15,6 +15,7 @@ export interface AgendaSubItem {
   title: string;
   duration: string;
   speaker?: string;
+  speakerTitle?: string | string[];
 }
 
 export interface AgendaItem {

@@ -72,6 +72,7 @@ export const INVITATION_CONFIG: ConferenceConfig = {
       avatarUrl: '/YaoQing/黄涛.jpeg',
       organization: [
         '华创云信数字技术股份有限公司AI技术首席运营官',
+        '贵旅数网科技有限公司总经理',
         '云码通数据运营股份有限公司总经理',
       ],
       avatarBg: '#EDFAF4',
@@ -96,6 +97,8 @@ export const INVITATION_CONFIG: ConferenceConfig = {
       timeRange: '14:35 - 14:40',
       duration: '5 分钟',
       title: '贵旅集团领导致辞',
+      speaker: '龙丛',
+      speakerTitle: '贵州省旅游产业发展集团有限公司副董事长、总经理',
       isHighlight: true,
     },
     {
@@ -107,17 +110,29 @@ export const INVITATION_CONFIG: ConferenceConfig = {
         {
           title: '酒店行业现实困境与转型破局之路',
           duration: '15 分钟',
+          speaker: '刘勇军',
+          speakerTitle: [
+            '贵州省住宿行业协会副会长',
+            '贵州瑞锦格林酒店管理公司总经理',
+            '贵大戈友会荣誉会长',
+          ],
         },
         {
           title: 'AI 技术浪潮：全社会变革与文旅酒店行业能力边界',
           duration: '15 分钟',
+          speaker: '黄涛',
+          speakerTitle: [
+            '华创云信数字技术股份有限公司AI技术首席运营官',
+            '贵旅数网科技有限公司总经理',
+            '云码通数据运营股份有限公司总经理',
+          ],
         },
       ],
     },
     {
       id: 'agenda-4',
-      timeRange: '15:10 - 15:50',
-      duration: '40 分钟',
+      timeRange: '15:10 - 15:40',
+      duration: '30 分钟',
       title: '解决方案发布',
       isHighlight: true,
       subItems: [
@@ -137,7 +152,7 @@ export const INVITATION_CONFIG: ConferenceConfig = {
     },
     {
       id: 'agenda-5',
-      timeRange: '15:50 - 16:00',
+      timeRange: '15:40 - 15:50',
       duration: '10 分钟',
       title: '合作签约仪式',
     },

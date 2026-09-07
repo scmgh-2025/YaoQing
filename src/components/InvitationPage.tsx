@@ -68,7 +68,20 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ isActive, onNext
 
         {/* Body Content (Line-height 1.9, Medium Grey, Justified) */}
         <p className="text-base sm:text-[17px] leading-[1.95] text-[#6B7280] text-justify tracking-wide indent-6">
-          {invitationText}
+          {(() => {
+            const needle = `${theme.title} — ${theme.subTitle}`;
+            const parts = invitationText.split(needle);
+            if (parts.length === 2) {
+              return (
+                <>
+                  {parts[0]}
+                  <strong className="font-bold text-[#1F2933]">{needle}</strong>
+                  {parts[1]}
+                </>
+              );
+            }
+            return invitationText;
+          })()}
         </p>
 
         {/* Signature with ornamental feather line */}

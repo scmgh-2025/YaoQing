@@ -81,7 +81,7 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
                   {/* Speaker Details (Indented) */}
                   {item.speaker && (
                     <div className="pl-2 border-l-2 border-[#E3F7EF] mt-1 space-y-0.5">
-                      <p className="text-xs text-[#4A90E2] font-medium">
+                      <p className="text-xs text-[#4A90E2] font-bold">
                         {item.speaker}
                       </p>
                       {item.speakerTitle && (
@@ -101,13 +101,30 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
                           className="px-2.5 py-2 rounded-lg bg-[#F8FAFC] border border-[#F0F2F5]"
                         >
                           <div className="flex items-start gap-2 text-sm font-semibold text-[#1F2933]">
-                            <span className="leading-snug">{sub.title}</span>
+                          <span className="leading-snug">{sub.title}</span>
+                        </div>
+                        {(sub.speaker || sub.speakerTitle) && (
+                          <div className="mt-1 pl-2 border-l-2 border-[#E3F7EF] space-y-0.5">
+                            {sub.speaker && (
+                              <div className="text-[11px] text-[#4A90E2] font-bold leading-snug">
+                                {sub.speaker}
+                              </div>
+                            )}
+                            {sub.speakerTitle && (
+                              Array.isArray(sub.speakerTitle) ? (
+                                <div className="text-[10.5px] text-[#6B7280] leading-snug space-y-0.5">
+                                  {sub.speakerTitle.map((t, i) => (
+                                    <div key={i}>{t}</div>
+                                  ))}
+                                </div>
+                              ) : (
+                                <div className="text-[10.5px] text-[#6B7280] leading-snug">
+                                  {sub.speakerTitle}
+                                </div>
+                              )
+                            )}
                           </div>
-                          {sub.speaker && (
-                            <div className="text-[11px] text-[#6B7280] mt-1">
-                              {sub.speaker}
-                            </div>
-                          )}
+                        )}
                         </div>
                       ))}
                     </div>
