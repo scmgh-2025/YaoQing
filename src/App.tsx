@@ -306,18 +306,22 @@ export default function App() {
         ))}
       </nav>
 
-      {/* 4. Downward Gesture Hint (无限循环跳动，最后一页隐藏) */}
+      {/* 4. Downward Gesture Hint (无限循环跳动，最后一页隐藏；点击也可翻页) */}
       {currentPage < TOTAL_PAGES - 1 && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed bottom-9 inset-x-0 z-30 flex flex-col items-center pointer-events-none"
+          className="fixed bottom-9 inset-x-0 z-30 flex flex-col items-center"
+          onClick={handleNextPage}
         >
-          <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-white/70 backdrop-blur-xs text-[11px] text-[#6B7280] shadow-xs animate-bounce-down">
+          <button
+            type="button"
+            className="flex items-center gap-1 px-3 py-1 rounded-full bg-white/70 backdrop-blur-xs text-[11px] text-[#6B7280] shadow-xs animate-bounce-down hover:bg-white hover:text-[#4A90E2] active:scale-95 transition-all cursor-pointer"
+          >
             <span>滑动翻页</span>
             <ChevronDown className="w-3.5 h-3.5 text-[#4A90E2]" />
-          </div>
+          </button>
         </motion.div>
       )}
 
