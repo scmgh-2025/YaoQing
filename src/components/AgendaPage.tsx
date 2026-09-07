@@ -81,11 +81,11 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
                   {/* Speaker Details (Indented) */}
                   {item.speaker && (
                     <div className="pl-2 border-l-2 border-[#E3F7EF] mt-1 space-y-0.5">
-                      <p className="text-xs text-[#4A90E2] font-bold">
+                      <p className="text-sm text-[#4A90E2] font-bold">
                         {item.speaker}
                       </p>
                       {item.speakerTitle && (
-                        <p className="text-[11px] text-[#6B7280] leading-tight">
+                        <p className="text-xs text-[#6B7280] leading-snug">
                           {item.speakerTitle}
                         </p>
                       )}
@@ -106,19 +106,19 @@ export const AgendaPage: React.FC<AgendaPageProps> = ({ isActive, onNext }) => {
                         {(sub.speaker || sub.speakerTitle) && (
                           <div className="mt-1 pl-2 border-l-2 border-[#E3F7EF] space-y-0.5">
                             {sub.speaker && (
-                              <div className="text-[11px] text-[#4A90E2] font-bold leading-snug">
+                              <div className="text-sm text-[#4A90E2] font-bold leading-snug">
                                 {sub.speaker}
                               </div>
                             )}
                             {sub.speakerTitle && (
                               Array.isArray(sub.speakerTitle) ? (
-                                <div className="text-[10.5px] text-[#6B7280] leading-snug space-y-0.5">
+                                <div className="text-xs text-[#6B7280] leading-snug space-y-0.5">
                                   {sub.speakerTitle.map((t, i) => (
                                     <div key={i}>{t}</div>
                                   ))}
                                 </div>
                               ) : (
-                                <div className="text-[10.5px] text-[#6B7280] leading-snug">
+                                <div className="text-xs text-[#6B7280] leading-snug">
                                   {sub.speakerTitle}
                                 </div>
                               )
