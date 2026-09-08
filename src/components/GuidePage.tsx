@@ -214,17 +214,10 @@ export const GuidePage: React.FC<GuidePageProps> = ({ isActive, onGoToTop, onOpe
             })()}
           </p>
 
-          <div className="flex flex-row items-stretch gap-2 pt-2 border-t border-[#F0F2F5]">
-            <button
-              onClick={openMapSelector}
-              className="flex-1 py-2.5 px-4 rounded-xl bg-[#DFF4FF]/60 hover:bg-[#DFF4FF] text-[#4A90E2] text-base sm:text-[17px] font-semibold flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
-            >
-              <Navigation className="w-4 h-4 text-[#56C596]" />
-              <span>一键导航</span>
-            </button>
+          <div className="pt-2 border-t border-[#F0F2F5]">
             <button
               onClick={handleCopyAddress}
-              className="flex-1 py-2.5 px-4 rounded-xl bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#6B7280] text-base sm:text-[17px] font-medium flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
+              className="w-full py-2.5 px-4 rounded-xl bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#6B7280] text-base sm:text-[17px] font-medium flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
             >
               {copied ? <Check className="w-4 h-4 text-[#56C596]" /> : <Copy className="w-4 h-4" />}
               <span>{copied ? '已复制' : '复制地址'}</span>

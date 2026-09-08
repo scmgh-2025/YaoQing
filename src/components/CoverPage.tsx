@@ -39,7 +39,7 @@ export const CoverPage: React.FC<CoverPageProps> = ({ isActive }) => {
       </motion.div>
 
       {/* 2. Middle Main Conference Theme & Time/Location */}
-      <div className="my-auto py-4 flex flex-col items-center text-center relative z-10">
+      <div className="my-auto py-1 flex flex-col items-center text-center relative z-10">
         {/* Main Title */}
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
@@ -58,7 +58,7 @@ export const CoverPage: React.FC<CoverPageProps> = ({ isActive }) => {
           initial={{ opacity: 0, y: 16 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-6 w-full max-w-sm bg-gradient-to-b from-white/55 to-white/25 backdrop-blur-xs rounded-2xl p-5 sm:p-6 text-left space-y-4 shadow-xs"
+          className="mt-2 w-full max-w-sm bg-gradient-to-b from-white/55 to-white/25 backdrop-blur-xs rounded-2xl p-5 sm:p-6 text-left space-y-4 shadow-xs"
         >
           {/* Meeting Time */}
           <div className="text-center">
@@ -90,13 +90,31 @@ export const CoverPage: React.FC<CoverPageProps> = ({ isActive }) => {
         initial={{ opacity: 0, y: 15 }}
         animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
         transition={{ duration: 0.7, delay: 0.45 }}
-        className="text-center pt-4 pb-6 space-y-1.5 border-t border-[#4A90E2]/15 relative z-10"
+        className="text-center pt-2 pb-3 space-y-1 border-t border-[#4A90E2]/15 relative z-10"
       >
-        <div className="text-base sm:text-[17px] text-[#4B5563]">
-          主办：<span className="text-[#1F2933] font-semibold">{theme.organizer}</span>
+        <div className="text-sm sm:text-base text-[#4B5563]">
+          主办：
+          {Array.isArray(theme.organizer) ? (
+            <div className="text-[#1F2933] font-semibold leading-snug">
+              {theme.organizer.map((o, i) => (
+                <div key={i}>{o}</div>
+              ))}
+            </div>
+          ) : (
+            <span className="text-[#1F2933] font-semibold">{theme.organizer}</span>
+          )}
         </div>
-        <div className="text-base sm:text-[17px] text-[#4B5563]">
-          承办：<span className="text-[#1F2933] font-semibold">{theme.coOrganizer}</span>
+        <div className="text-sm sm:text-base text-[#4B5563]">
+          承办：
+          {Array.isArray(theme.coOrganizer) ? (
+            <div className="text-[#1F2933] font-semibold leading-snug">
+              {theme.coOrganizer.map((o, i) => (
+                <div key={i}>{o}</div>
+              ))}
+            </div>
+          ) : (
+            <span className="text-[#1F2933] font-semibold">{theme.coOrganizer}</span>
+          )}
         </div>
       </motion.div>
 

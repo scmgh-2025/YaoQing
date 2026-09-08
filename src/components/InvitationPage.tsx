@@ -86,7 +86,6 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ isActive, onNext
 
         {/* Signature with ornamental feather line */}
         <div className="mt-9 text-right">
-          <p className="text-base font-semibold text-[#1F2933] mb-1.5">{theme.organizer}</p>
           <div className="flex items-center justify-center gap-2 w-full">
             <span className="w-14 h-[1px] rounded-full bg-gradient-to-r from-[#56C596]/0 to-[#56C596]/35" />
             <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-[#4A90E2]/70 to-[#56C596]/70" />

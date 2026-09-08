@@ -9,15 +9,15 @@ export const INVITATION_CONFIG: ConferenceConfig = {
     title: '智赋文旅・数启新局',
     subTitle: '酒店场景 AI 智能体创新实践交流大会',
     dateText: '2026年9月16日（周三）',
-    timeText: '14:30—17:30',
+    timeText: '14:30—16:40',
     venueText: '贵阳东景希尔顿酒店',
     venueDetail: '2楼 观山厅',
     address: '贵阳市观山湖区金阳北路 277 号，贵阳东景希尔顿酒店 ——2楼 观山厅',
     mapUrl: 'https://apis.map.qq.com/uri/v1/marker?marker=coord:26.6348,106.6318;title:贵阳东景希尔顿酒店;addr:贵阳市观山湖区金阳北路277号',
     latitude: 26.6348,
     longitude: 106.6318,
-    organizer: '贵旅数网科技有限公司',
-    coOrganizer: '云码通数据运营股份有限公司',
+    organizer: ['华创云信数字技术股份有限公司', '贵州省旅游产业发展集团有限公司'],
+    coOrganizer: ['云码通数据运营股份有限公司', '贵旅数网科技有限公司'],
     contactName: 'XXX',
     contactPhone: '1234567890',
     contactPhoneTel: '1234567890',
@@ -97,19 +97,16 @@ export const INVITATION_CONFIG: ConferenceConfig = {
       timeRange: '14:35 - 14:40',
       duration: '5 分钟',
       title: '贵旅集团领导致辞',
-      speaker: '龙丛',
-      speakerTitle: '贵州省旅游产业发展集团有限公司副董事长、总经理',
-      isHighlight: true,
     },
     {
       id: 'agenda-3',
-      timeRange: '14:40 - 15:10',
-      duration: '30 分钟',
+      timeRange: '14:40 - 15:20',
+      duration: '40 分钟',
       title: '专家主题演讲',
       subItems: [
         {
           title: '酒店行业现实困境与转型破局之路',
-          duration: '15 分钟',
+          duration: '20 分钟',
           speaker: '刘勇军',
           speakerTitle: [
             '贵州省住宿行业协会副会长',
@@ -119,7 +116,7 @@ export const INVITATION_CONFIG: ConferenceConfig = {
         },
         {
           title: 'AI 技术浪潮：全社会变革与文旅酒店行业能力边界',
-          duration: '15 分钟',
+          duration: '20 分钟',
           speaker: '黄涛',
           speakerTitle: [
             '华创云信数字技术股份有限公司AI技术首席运营官',
@@ -131,13 +128,13 @@ export const INVITATION_CONFIG: ConferenceConfig = {
     },
     {
       id: 'agenda-4',
-      timeRange: '15:10 - 15:40',
-      duration: '30 分钟',
+      timeRange: '15:20 - 16:20',
+      duration: '60 分钟',
       title: '解决方案发布',
       isHighlight: true,
       subItems: [
         {
-          title: 'AI 伴侣 —— 面向住客全流程 C 端产品方案',
+          title: '住客AI服务 —— 面向住客全流程 C 端产品方案',
           duration: '20 分钟',
         },
         {
@@ -145,15 +142,15 @@ export const INVITATION_CONFIG: ConferenceConfig = {
           duration: '10 分钟',
         },
         {
-          title: '老板端掌上 AI —— 服务酒店老板经营决策产品方案',
+          title: '老板掌上 AI —— 服务酒店老板经营决策产品方案',
           duration: '10 分钟',
         },
       ],
     },
     {
       id: 'agenda-5',
-      timeRange: '15:40 - 15:50',
-      duration: '10 分钟',
+      timeRange: '16:20 - 16:40',
+      duration: '20 分钟',
       title: '合作签约仪式',
     },
   ],

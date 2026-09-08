@@ -51,8 +51,8 @@ export interface ConferenceConfig {
     mapUrl: string;
     latitude: number;
     longitude: number;
-    organizer: string;
-    coOrganizer: string;
+    organizer: string | string[];
+    coOrganizer: string | string[];
     contactName: string;
     contactPhone: string;
     contactPhoneTel: string;
