@@ -1,1 +1,108 @@
-import { ConferenceConfig } from './types';    '酒店场景智能化',    '文旅数字化新基建',    'B/C 端双轮驱动',  ],  guests: [    {      id: 'guest-1',      name: '刘勇军',      roleType: 'expert',      roleLabel: '特邀住宿行业专家',      title: '特邀嘉宾',      avatarUrl: '/刘勇军.png',      organization: [        '贵州省住宿行业协会副会长',        '贵州瑞锦格林酒店管理公司总经理',        '贵大戈友会荣誉会长',      ],      avatarBg: '#EBF7FF',    },    {      id: 'guest-2',      name: '黄涛',      roleType: 'expert',      roleLabel: '特邀AI专家',      title: '首席 AI 架构科学家',      avatarUrl: '/黄涛.jpeg',      organization: [        '华创云信数字技术股份有限公司AI技术首席运营官',        '贵旅数网科技有限公司总经理',        '云码通数据运营股份有限公司总经理',      ],      avatarBg: '#EDFAF4',    },  ],  agenda: [    {      id: 'agenda-0',      timeRange: '14:00 - 14:30',      duration: '30 分钟',      title: '签到入场',    },    {      id: 'agenda-1',      timeRange: '14:30 - 14:35',      duration: '5 分钟',      title: '主持人开场',    },    {      id: 'agenda-2',      timeRange: '14:35 - 14:40',      duration: '5 分钟',      title: '贵旅集团领导致辞',    },    {      id: 'agenda-3',      timeRange: '14:40 - 15:20',      duration: '40 分钟',      title: '专家主题演讲',      subItems: [        {          title: '酒店行业现实困境与转型破局之路',          duration: '20 分钟',          speaker: '刘勇军',          speakerTitle: [            '贵州省住宿行业协会副会长',            '贵州瑞锦格林酒店管理公司总经理',            '贵大戈友会荣誉会长',          ],        },        {          title: 'AI 技术浪潮：全社会变革与文旅酒店行业能力边界',          duration: '20 分钟',          speaker: '黄涛',          speakerTitle: [            '华创云信数字技术股份有限公司AI技术首席运营官',            '贵旅数网科技有限公司总经理',            '云码通数据运营股份有限公司总经理',          ],        },
+import { ConferenceConfig } from './types';
+
+/**
+ * 集中式配置对象 (Centralized Configuration)
+ * 非技术人员可在此直接修改会议信息、文案、嘉宾、议程、颜色主题与接口地址
+ */
+export const INVITATION_CONFIG: ConferenceConfig = {
+  title: '2025数智黔行·酒店行业创新发展大会',
+  subtitle: [
+    '酒店场景智能化',
+    '文旅数字化新基建',
+    'B/C 端双轮驱动',
+  ],
+  guests: [
+    {
+      id: 'guest-1',
+      name: '刘勇军',
+      roleType: 'expert',
+      roleLabel: '特邀住宿行业专家',
+      title: '特邀嘉宾',
+      avatarUrl: '/刘勇军.png',
+      organization: [
+        '贵州省住宿行业协会副会长',
+        '贵州瑞锦格林酒店管理公司总经理',
+        '贵大戈友会荣誉会长',
+      ],
+      avatarBg: '#EBF7FF',
+    },
+    {
+      id: 'guest-2',
+      name: '黄涛',
+      roleType: 'expert',
+      roleLabel: '特邀AI专家',
+      title: '首席 AI 架构科学家',
+      avatarUrl: '/黄涛.jpeg',
+      organization: [
+        '华创云信数字技术股份有限公司AI技术首席运营官',
+        '贵旅数网科技有限公司总经理',
+        '云码通数据运营股份有限公司总经理',
+      ],
+      avatarBg: '#EDFAF4',
+    },
+  ],
+  agenda: [
+    {
+      id: 'agenda-0',
+      timeRange: '14:00 - 14:30',
+      duration: '30 分钟',
+      title: '签到入场',
+    },
+    {
+      id: 'agenda-1',
+      timeRange: '14:30 - 14:35',
+      duration: '5 分钟',
+      title: '主持人开场',
+    },
+    {
+      id: 'agenda-2',
+      timeRange: '14:35 - 14:40',
+      duration: '5 分钟',
+      title: '贵旅集团领导致辞',
+    },
+    {
+      id: 'agenda-3',
+      timeRange: '14:40 - 15:20',
+      duration: '40 分钟',
+      title: '专家主题演讲',
+      subItems: [
+        {
+          title: '酒店行业现实困境与转型破局之路',
+          duration: '20 分钟',
+          speaker: '刘勇军',
+          speakerTitle: [
+            '贵州省住宿行业协会副会长',
+            '贵州瑞锦格林酒店管理公司总经理',
+            '贵大戈友会荣誉会长',
+          ],
+        },
+        {
+          title: 'AI 技术浪潮：全社会变革与文旅酒店行业能力边界',
+          duration: '20 分钟',
+          speaker: '黄涛',
+          speakerTitle: [
+            '华创云信数字技术股份有限公司AI技术首席运营官',
+            '贵旅数网科技有限公司总经理',
+            '云码通数据运营股份有限公司总经理',
+          ],
+        },
+      ],
+    },
+  ],
+  theme: {
+    colors: {
+      primary: '#165DFF',
+      secondary: '#00B42A',
+      accent: '#FF7D00',
+      background: '#FFFFFF',
+      text: '#1D2129',
+      textSecondary: '#4E5969',
+      border: '#E5E6EB',
+      card: '#F2F3F5',
+      success: '#00B42A',
+      warning: '#FF7D00',
+      error: '#FF4D4F',
+    },
+  },
+  footer: '© 2025 贵州省旅游协会。All rights reserved.',
+};
