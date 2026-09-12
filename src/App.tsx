@@ -45,8 +45,8 @@ interface WxShareOpts {
 const SHARE_DATA: WxShareOpts = {
   title: '文旅场景AI智能体创新实践交流大会',
   desc: '智赋文旅·数启新程 文旅场景AI智能体创新实践交流大会',
-  link: 'https://scmgh-2025.github.io/YaoQing/',
-  imgUrl: 'https://scmgh-2025.github.io/YaoQing/%E5%B0%81%E9%9D%A2.png',
+  link: 'https://yao-qing.vercel.app/',
+  imgUrl: 'https://yao-qing.vercel.app/%E5%B0%81%E9%9D%A2.png',
 };
 
 /**
@@ -283,53 +283,3 @@ export default function App() {
               <GuidePage
                 isActive={currentPage === 5}
                 onGoToTop={() => goToPage(0)}
-                onOpenSharePoster={() => setShowSharePoster(true)}
-              />
-            )}
-          </motion.div>
-        </AnimatePresence>
-      </section>
-
-      {/* 3. Bottom Navigation Page Indicator Dots */}
-      <nav id="bottom-indicators" className="fixed bottom-3 inset-x-0 z-40 flex items-center justify-center gap-2 pointer-events-auto">
-        {Array.from({ length: TOTAL_PAGES }).map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => goToPage(idx)}
-            aria-label={`跳转到第 ${idx + 1} 页`}
-            className={`transition-all duration-300 rounded-full ${
-              currentPage === idx
-                ? 'w-6 h-2 bg-gradient-to-r from-[#4A90E2] to-[#56C596] shadow-xs'
-                : 'w-2 h-2 bg-[#1F2933]/20 hover:bg-[#1F2933]/40'
-            }`}
-          />
-        ))}
-      </nav>
-
-      {/* 4. Downward Gesture Hint (无限循环跳动，最后一页隐藏；点击也可翻页) */}
-      {currentPage < TOTAL_PAGES - 1 && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed bottom-9 inset-x-0 z-30 flex flex-col items-center"
-          onClick={handleNextPage}
-        >
-          <button
-            type="button"
-            className="flex items-center gap-1 px-3 py-1 rounded-full bg-white/70 backdrop-blur-xs text-[11px] text-[#6B7280] shadow-xs animate-bounce-down hover:bg-white hover:text-[#4A90E2] active:scale-95 transition-all cursor-pointer"
-          >
-            <span>滑动翻页</span>
-            <ChevronDown className="w-3.5 h-3.5 text-[#4A90E2]" />
-          </button>
-        </motion.div>
-      )}
-
-      {/* 7. Modals */}
-      <SharePosterModal
-        isOpen={showSharePoster}
-        onClose={() => setShowSharePoster(false)}
-      />
-    </main>
-  );
-}
